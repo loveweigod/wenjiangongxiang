@@ -1,0 +1,62 @@
+some 
+                   var xiugai = this.books.some(function(item) {
+                        return item.id == id
+                    })
+                    console.log(xiugai);  返回值是布尔值
+
+filter
+                    var xiugai = this.books.filter(function(item) {
+                        return item.id == id
+
+                    })
+                    console.log(xiugai);返回值是一个数组仅仅包含查找条件的对象---一个或多个
+
+
+findIndex         // 根据id从数组中查找元素的索引
+                       // var index = this.books.findIndex(function(item){
+                       //   return item.id == id;
+                      // });
+                      // 根据索引删除数组元素
+                      // this.books.splice(index, 1);
+
+
+2、把数组方法处理好之后，就分成了两类
+
+      ① 变异方法：就是直接对原数组进行操作，进行更新
+        push()
+        pop()
+        shift()
+        unshift()
+        splice()    eg:splice(参1,参2) 第一个参数代表从什么地方开始删除,第二个参数代表删除几个     方法返回一个包含已删除项的数组
+        sort()
+        reverse()
+
+      ② 替换数组：替换数组会生成一个新的数组
+
+        filter()
+        concat()
+        slice()  eg:slice(参1,参2) 表示截取数据,从什么地方开始截取,截取到什么位置[1 , 2) 左闭右开 -----包左不包右
+
+
+
+map():返回一个新的Array，每个元素为调用func的结果。新数组的长度和原来的是一样的，他只不过是逐一对原来数据里的每个元素进行操作。
+
+filter():返回一个符合func条件的元素数组。筛选条件，把数组符合条件的放在新的数组里面返回。新数组和原来的数组长度不一定一样。
+
+some():返回一个boolean，判断是否有元素是否符合func条件。数组里面所有的元素有一个符合条件就返回true。
+
+every():返回一个boolean，判断每个元素是否符合func条件。数组里面所有的元素都符合才返回true。
+
+forEach():没有返回值，只是针对每个元素调用func   。循环数组。和for的用法一样的。
+
+
+
+
+
+
+
+
+
+
+
+
