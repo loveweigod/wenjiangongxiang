@@ -687,3 +687,62 @@ slice()--slice() 方法可从已有的数组中返回选定的元素。该方法
       </script>
 
 ### Vue基础第三天
+
+#### Vue组件
+
+1. 组件化开发
+
+I、什么是组件化开发
+  组件化开发只是一种思想，是将整个应用网站，看成一个个的模块组件，组件化并不是前端独有的思想，像后台开发语言PHP、Java都有自己的组将思想;组件就是将UI和逻辑结构看成一个整体，也可以理解为就是将UI和逻辑结构封装成一个单独的文件，那么在任何地方使用这个组件，UI和结构看上去都是一样的，从而事现【复用】
+
+II、组件化的优势
+A：复用，方便后期的重复使用
+B：易于维护，哪块需要进行修改，只更改某个组件就可以了，其它组件不用更改
+
+III、web Components开发规范
+  因为每个人开发组件的思想、实现功能的方法、逻辑以及UI的写法是不一样的，就会造成，封装组件化比较困难，
+  那么就出现了一系列的开发规范，比较流行的就是 web Components,
+  web Components的核心思想就是：通过自定义元素进行包装UI和逻辑，
+  Vue基本实现了web Components的规范
+
+IV、如何创建一个组件
+  通过Vue.component()创建组件
+  接收两个参数：
+  第一个参数：组件的名称
+  第二个参数：封装的组件UI、逻辑私有数据
+  使用组件时，将[组件名]当成[标签]来使用就可以
+eg:
+  <div id="app">
+    <p>{{name}}</p>
+    <button-counter></button-counter>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    Vue.component('button-counter', {
+      // 这里的 data 是一个方法，指的是当前组件私有的数据
+      data: function () {
+        return {
+          count: 1
+        }
+      },
+      // template 指组件的 UI 结构
+      template: '<div><button @click="handle">按钮</button><p>{{count}}</p></div>',
+      methods: {
+        handle: function () {
+          this.count += 1
+        }
+      }
+    })
+
+V、创建组件的注意事项
+
+A: data必须是一个function，必须return一个对象出来
+B: 定义模板必须有一个根元素
+C: 可以使用模板字符串包裹UI结构
+D：组件命名有两种方式
+  ① 驼峰命名法
+  如果使用了驼峰命名法定义组件，那么在使用的时候，需要转成 中划线 形式才可以，例如： ElButton  --> <el-button></el-button>
+  但是：在模板字符串中，是可以直接使用的，【统一约定： 如果使用了驼峰命名法定义组件，无论在什么地方使用，都转成中划线使用就可以】
+  ② 中划线命名法
+
+2. 局部组件
